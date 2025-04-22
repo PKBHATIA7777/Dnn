@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DNN Masterclass Form</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      background-color: #2c2c2c;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 15px;
+    }
+    select, input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 5px;
+    }
+    button {
+      background-color: goldenrod;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #reasonField {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <form action="https://formspree.io/f/mpwdzwlq" method="POST">
+    
+    <label>
+      Select your name:
+      <select name="name" id="nameSelect" required>
+        <option value="">-- Select Name --</option>
+        <option value="Pk">Parth Bhatia</option>
+        <option value="RG">Ria Garg</option>
+        <option value="PD">Pavani Deep</option>
+        <option value="Mg">Naman Goyal</option>
+        <option value="SD">Sargam Dhiman</option>
+        <option value="NM">Nandini Maheshwari</option>
+        <option value="KJ">Khushi Jain</option>
+      </select>
+    </label>
+
+    <label>
+      Whatsapp number where you want rest of the PPTs to be shared:
+      <input type="tel" name="tel" required>
+    </label>
+
+    <div id="reasonField">
+      <label>
+        Please share the reason for not attending DNN Masterclass:
+        <textarea id="reasonText" name="reason_for_not_attending" placeholder="Your reason..."></textarea>
+      </label>
+    </div>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    const nameSelect = document.getElementById("nameSelect");
+    const reasonField = document.getElementById("reasonField");
+    const reasonText = document.getElementById("reasonText");
+
+    nameSelect.addEventListener("change", function () {
+      const value = this.value;
+      if (["NM", "SD", "KJ", "Mg"].includes(value)) {
+        reasonField.style.display = "block";
+        reasonText.setAttribute("required", "required");
+      } else {
+        reasonField.style.display = "none";
+        reasonText.removeAttribute("required");
+      }
+    });
+  </script>
+
+</body>
+</html>
